@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Modificando HTML #02</h1>
+    <div id='div1'>1</div>
+    <div id='div2'>2</div>
+    <div id='div3'>3</div>
+    <p class='numero'>4</p>
+    <p class='numero'>5</p>
+
+    <script>
+        $('#div1').append(',2')
+        $('#div1').prepend('0,')
+        $('<span>,3</span>').appendTo('#div1')
+        $('<span>-1,</span>').prependTo('#div1')
+        $('#div2').before('<p>Antes 2</p>')
+        $('#div2').after('<p>Depois 2</p>')
+        //insertBefore('#div3') -> antes da div 3
+        //insertAfter('#div3') -> depois da div 3
+        $('p.numero').wrap('<div>')//colocou o paragrafo dentro de uma div
+        $('p.numero').wrapAll('<div id="div4">')
+        $('#div4').empty()
+        $('#div3, #div4').prev().remove()//tanto antes3 quanto depois3
+        //Qualquer paragrafo dentro do body será subtsituido
+        //pela div com Substituto
+        $('<div>Substituto</div>').replaceAll('body > p')
+        $('body > p').replaceWith('<div>Substituto</div>')
+        $('body > p').replaceWith(function() {
+            //pegando o conteúdo do parágrafo e colo-
+            //cando dentro da div criada.
+            return $('<div>').html($(this).html).append('!!!')
+        })
+    </script>
+</body>

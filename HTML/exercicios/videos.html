@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos</title>
+</head>
+<body>
+    <div class="containerVideo">
+        <div class="video">
+            <video id="meuVideo" width="800" height="450" controls controlsList="nodownload">
+                <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+                Seu browser não suporta a tag de vídeo
+            </video>
+        </div>
+        <div wm-progresso="meuVideo" class="progresso">
+            <div></div>
+        </div>
+        <div class="botoes">
+            <button wm-play="meuVideo" class="botao botaoPlay">Play</button>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+    .containerVideo{
+        position: absolute;
+    }
+
+    .progresso{
+        width: 100%;
+        height: 10px;
+        border-radius: 13px;
+        border: solid 1px #444;
+        margin-bottom: 5px;
+    }
+
+    .progresso > div{
+        background-color: red;
+        border-radius: 13px;
+        color: #fff;
+        height: 100%;
+        width: 0%;
+        text-align: right;
+        font-size: 14px;
+    }
+
+    .botao{
+        border-radius: 7px;
+        width: 6%;
+        height: 30px;
+        border: solid 1px #444;
+    }
+
+    .botaoStop{
+        background-color: red;
+    }
+    
+    .botaoPlay{
+        background-color: green;
+    }
+
+    
+</style>
+
+<script>
+    //`[wm-play=${id}]` no selector e no parametro da função que chamara o querySelector para filtrar pelo valor da propriedade.
+    const video = document.getElementById('meuVideo')
+    video.oncontextmenu = () => false
+    const btnVideo = document.querySelectorAll(`[wm-play]`).forEach(botao => {
+        botao.onclick = function(evento){
+            if(video.paused){
+                video.play()
+                botao.innerHTML = 'Stop'
+                botao.classList.add('botaoStop')
+                botao.classList.remove('botaoPlay')
+            }else{
+                video.pause()
+                botao.innerHTML = 'Play'
+                botao.classList.add('botaoPlay')
+                botao.classList.remove('botaoStop')
+            }
+        }
+    })
+
+    setInterval(() => {
+        const percentual = (video.currentTime / video.duration) * 100
+        const divPercentual = document.querySelector('[wm-progresso] > div')
+        divPercentual.style.width = `${percentual}%`
+        divPercentual.innerHTML = `${percentual.toFixed(1)}%`
+    },500)
+
+
+</script>

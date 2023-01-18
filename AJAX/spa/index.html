@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Mini SPA</title>
+    <link rel='stylesheet' href='../css/estilo.css'>
+    <style>
+        nav {
+            font-size: 2em;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #FFF;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body class="conteudo">
+    <nav>
+        <a href wm-link="series.html" wm-destino=".pagina">Séries</a> |
+        <a href wm-link="linguagens.html" wm-destino=".pagina">Linguagens</a>
+    </nav>
+    <div class="pagina"></div>
+    <script>
+
+        function carregarHTML(url, destino, push = true){
+            fetch(url)
+            //Para json, data.json. Para HTML, data.text()
+                .then(data => data.text())
+                .then(data => {
+                    document.querySelector(destino).innerHTML = data
+                    if(push){
+                        history.pushState({destino}, "Página AJAX", url)
+                    }
+                })
+        }
+
+
+        document.querySelectorAll('[wm-link]').forEach(link => {
+            link.onclick = e => {
+                const url = link.attributes['wm-link'].value
+                const destino = link.attributes['wm-destino'].value
+                e.preventDefault()
+                carregarHTML(url, destino)
+            }
+        })
+
+        window.onpopstate = e => {
+            if(e.state){
+                carregarHTML(window.location.href, e.state.destino, false)
+            }
+        }
+    </script>
+</body>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Classes</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        Classes
+    </div>
+    <script>
+        const div = document.querySelector('div')
+        console.log(div)
+        //Retorna DOMTokenlist, sendo possível iterar.
+        const classes = document.querySelector('div').classList
+        classes.add('destaque')
+        classes.remove('destaque')
+        //Se houver, remove, caso contrário adiciona.
+        classes.toggle('destaque')
+        console.log(classes.contains('destaque'))
+        console.log(classes.lenght)
+        classes.toggle('destaque')
+
+        classes.forEach(classe => console.log(classe))
+        //const arrayClasses = Array.from(classes)
+        const arrayClasses = [...classes]
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #02</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
+    <script>
+        /*Query selector retorna o primeiro elemento dos vários*/             
+        document.querySelector('#primeiro').classList.add('destaque')
+        /*Query selector all retorna node list, logo, é possível realizar forEach, porém as outras funções
+         não, entao é bom transformar em array.
+        */
+        const selecionar = seletor => document.querySelectorAll(seletor).forEach(e => e.classList.add('destaque'))
+        const desselecionar = seletor => document.querySelectorAll(seletor).forEach(e => e.classList.remove('destaque'))
+        /*O que não for o primeiro*/
+        selecionar(':not(#primeiro)')
+        /*Primeiro filho de algum elemento*/
+        selecionar(':nth-child(1)')
+        selecionar('[wm-attrib]')
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+body{
+    margin: 0;
+    font-family: 'Oswald';
+}
+
+.cabecalho{
+    background-color: grey;
+    height: 55px;
+}
+
+.logo{
+    display: inline-block;
+    padding: 8px;
+    height: 40px;
+    vertical-align: top;
+}
+
+.logo img{
+    height: 100%;
+}
+
+.menu{
+    display: inline-block;
+}
+
+.menu li{
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: top;
+}
+
+.menu a:hover, .menu a.selected{
+    background-color: #fff;
+    color: #000;
+}
+
+a{
+    text-decoration: none;
+    color:#fff;
+}
+
+.menu-toggle{
+    padding: 8px;
+    display: none;
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.autenticacao{
+    padding: 15px;
+    display: inline-block;
+    float: right;
+}
+
+.botao{
+    padding: 5px;
+    border: solid 3px red;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px 1px #000;
+}
+
+.destaque{
+    background-color: red;
+}
+
+
+@media(min-width:627px){
+    .autenticacao{display: inline-block;}
+    .menu{display: inline-block;}
+    .menu-toggle{display: none;}
+}
+
+@media(max-width:626px){
+    .autenticacao{display: none;}
+    .menu{display: none;}
+    .menu-toggle{display: block;}
+}
+
+
+
+

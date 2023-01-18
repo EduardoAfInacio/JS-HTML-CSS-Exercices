@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #03</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário</h1>
+    <form name="pesquisa" action="http://www.google.com.br/search">
+        <input type="text" name="q" placeholder="Digite o termo...">
+        <select name="hl">
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="en-us">Inglês (Americano)</option>
+        </select>
+        <button>Pesquisar</button>
+    </form>
+    <script>
+        console.log(document.forms)
+        console.log(document.forms[0])
+        /*GetElementby name tras node list*/
+        console.log(document.getElementsByName('pesquisa'))
+        /*getElementsByTagName trás html collection*/
+        console.log(document.getElementsByTagName)
+        /*.pesquisa na dom já tras o elemento com nome pesquisa.*/
+        console.log(document.pesquisa)
+        /*.pesquisa na dom já tras o elemento com nome pesquisa e tras input com nome q.*/
+        console.log(document.pesquisa.q)
+        /* q e hl são parâmetros de busca que o google suporta.
+        ? para separar url dos parâmetros do get.
+        http://www.google.com.br/search?q=Windows&hl=pt-br
+        Alterar -> document.pesquisa.q.value = 'Linux'
+        document.pesquisa.hl.value = 'en-us'
+
+        Index selecionada.
+        */
+       console.log(document.pesquisa.hl.selectedIndex)
+
+    </script>
+</body>
+
+</html>

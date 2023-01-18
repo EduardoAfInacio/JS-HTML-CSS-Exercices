@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #04</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <p>Início</p>
+    </div>
+    <div>
+        <ul>
+            <li>Pedro</li>
+            <li>Ana</li>
+            <li>Bia</li>
+        </ul>
+    </div>
+    <div>
+        <p>Fim</p>
+    </div>
+    <script>
+        // Precisa ser function para que o this aponte para dentro do escopo da função.
+        // Caso fosse uma arrow function, o this apontaria para a window, o módulo.
+        function log() {
+            console.log(this)
+        }
+
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        const lista = document.querySelector('div ul')
+        lista.parentNode.log()
+        lista.childNodes.log()
+        // Virá 3 lis, como esperado, porém com 4 elementos de texto. Para que isso não ocorra,
+        // é necessário remover os espaços na ul entre as lis.
+        const primeiro = lista.firstChild
+        //primeiro elemento
+        primeiro.log()
+        primeiro.nextSibling.log()
+        //pega o irmao do primeiro elemento encontrado. Como o primeiro elemento é um espaço textual, logo, o next
+        //Sibling nesse caso é 'Pedro'.
+
+        const ultimo = lista.lastChild
+        ultimo.log()
+        //Ultimo elemento também é um espaço textual.
+        ultimo.previousSibling
+        //irmao do ultimo elemento, bia.
+
+        lista.children.log()
+        //vem sem espaços de texto, porém vem como html collection, sendo necessário transformar em array
+        //seja com o Array.from ou entao com [...variavel].
+        lista.firstElementChild.log()
+        //Trás o primeiro elemento, TAG, não pega espaços vazios.
+        lista.lastElementChild.log()
+        lista.parentNode.previousElementSibling.log()
+        lista.parentNode.nextElementSibling.log()
+
+        /*
+        document.querySelectorAll('div ul li').log()
+        com esse seletor, não há perigo de pegar espaços de texto vazios.
+        PRECISÃO MAIOR!!!
+        */
+
+    </script>
+</body>
+
+</html>

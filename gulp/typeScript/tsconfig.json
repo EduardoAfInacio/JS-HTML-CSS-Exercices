@@ -1,0 +1,14 @@
+{
+    "files": [
+        "src/**/*.ts"
+    ],
+    "compilerOptions": {
+        "rootDir": "src",
+        //Caso vá definir variável que não tem tipo, é preciso colocar o tipo 'any'.
+        //Com a noImplicitAny: true, caso exista uma variável do tipo any que não foi
+        //declarada como do tipo any, dará erro.
+        "noImplicitAny": true,
+        //Versão do javascript que será gerado o código final.
+        "target": "es5"
+    }
+}
