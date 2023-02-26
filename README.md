@@ -9,6 +9,6 @@ Covers:
 3. CSS: Basics, flexbox, grid, JS-integration, Bootstrap, SCSS.
 
 
-##Credits
+## Credits
 
 Made based on: https://www.udemy.com/course/curso-web/
